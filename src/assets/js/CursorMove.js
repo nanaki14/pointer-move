@@ -14,6 +14,9 @@ export default class CursorMove {
     this.cursorClass = !cursorClass ? '.cm-pointer__dot' : cursorClass
     this.cursorOverClass = !cursorOverClass ? '.cm-pointer__over' : cursorOverClass
     this.linkClass = !linkClass ? '.cm-link' : linkClass
+
+    this.visibleClass = 'is-visible'
+    this.hideClass = 'is-hide'
     this.hoverClass = 'is-hover'
     this.activeClass = 'is-active'
 
@@ -25,7 +28,8 @@ export default class CursorMove {
     this.cursorActived = false
     this.cursorHover = false
     this.cursorShown = false
-    this.delay = 6
+
+    this.delay = 8
     this.x = 0
     this.y = 0
 
@@ -90,20 +94,15 @@ export default class CursorMove {
   handlePosition(event) {
     this.endX = event.clientX
     this.endY = event.clientY
-
-    if (this.cursorShown) {
-      this.$cursor.style.top = this.endY + 'px'
-      this.$cursor.style.left = this.endX + 'px'
-    }
+    this.$cursor.style.top = this.endY + 'px'
+    this.$cursor.style.left = this.endX + 'px'
   }
 
   animateMoveOver() {
     this.x += (this.endX - this.x) / this.delay
     this.y += (this.endY - this.y) / this.delay
-    if (this.cursorShown) {
-      this.$cursorOver.style.top = this.y + 'px'
-      this.$cursorOver.style.left = this.x + 'px'
-    }
+    this.$cursorOver.style.top = this.y + 'px'
+    this.$cursorOver.style.left = this.x + 'px'
 
     requestAnimationFrame(this.animateMoveOver.bind(this))
   }
@@ -111,11 +110,15 @@ export default class CursorMove {
   toggleCursorShown() {
     console.log(this.cursorShown)
     if (this.cursorShown) {
-      this.$cursor.style.opacity = 1
-      this.$cursorOver.style.opacity = 1
+      this.$cursorOver.classList.remove(this.hideClass)
+      this.$cursor.classList.remove(this.hideClass)
+      this.$cursorOver.classList.add(this.visibleClass)
+      this.$cursor.classList.add(this.visibleClass)
     } else {
-      this.$cursor.style.opacity = 0
-      this.$cursorOver.style.opacity = 0
+      this.$cursorOver.classList.remove(this.visibleClass)
+      this.$cursor.classList.remove(this.visibleClass)
+      this.$cursorOver.classList.add(this.hideClass)
+      this.$cursor.classList.add(this.hideClass)
     }
   }
 

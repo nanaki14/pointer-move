@@ -10,8 +10,7 @@ $over-class: cm-pointer__over;
 $dot-color: #000;
 $over-color: rgba(#eee, 0.54);
 
-$ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-$ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 
 .#{$wrapper-class} {
   position: fixed;
@@ -28,27 +27,54 @@ $ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
   position: absolute;
   width: 8px;
   height: 8px;
+  margin: -4px 0 0 -4px;
   background-color: $dot-color;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  opacity: 0;
+  transform: scale(0);
   pointer-events: none;
   z-index: 2;
+  &.is-visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.3s $ease-out-cubic,  opacity 0.5s ease;
+  }
+  &.is-hide {
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.3s $ease-out-cubic,  opacity 0.5s ease;
+  }
 }
 
 .#{$over-class} {
   position: absolute;
   width: 30px;
   height: 30px;
+  margin: -15px 0 0 -15px;
   background-color: $over-color;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.3s $ease-in-out-quad;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s ease;
   pointer-events: none;
   z-index: 1;
+  &.is-visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.3s $ease-out-cubic,  opacity 0.5s ease;
+  }
+  &.is-hide {
+    opacity: 0;
+    transform: scale(0);
+  transition: transform 0.3s $ease-out-cubic,  opacity 0.5s ease-out;
+  }
   &.is-hover {
-    transform: translate(-50%, -50%) scale(2);
+    transform: scale(2);
+    transition: transform 0.3s $ease-out-cubic;
   }
   &.is-active {
-    transform: translate(-50%, -50%) scale(2);
+    transform: scale(2);
+    transition: transform 0.3s $ease-out-cubic;
   }
 }
+
