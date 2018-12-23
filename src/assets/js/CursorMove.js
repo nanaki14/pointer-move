@@ -29,6 +29,7 @@ export default class CursorMove {
     this.cursorHover = false
     this.cursorShown = false
 
+    this.breakpoint = 768
     this.delay = 8
     this.x = 0
     this.y = 0
@@ -64,6 +65,20 @@ export default class CursorMove {
         this.cursorHover = false
         this.toggleCursorHover()
       })
+    })
+
+    if (window.matchMedia(`screen and (max-width: ${this.breakpoint}px)`).matches) {
+      this.$wrapper.style.display = 'none'
+    } else {
+      this.$wrapper.style.display = 'block'
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.matchMedia(`screen and (max-width: ${this.breakpoint}px)`).matches) {
+        this.$wrapper.style.display = 'none'
+      } else {
+        this.$wrapper.style.display = 'block'
+      }
     })
 
     // Click events
@@ -108,7 +123,6 @@ export default class CursorMove {
   }
 
   toggleCursorShown() {
-    console.log(this.cursorShown)
     if (this.cursorShown) {
       this.$cursorOver.classList.remove(this.hideClass)
       this.$cursor.classList.remove(this.hideClass)
