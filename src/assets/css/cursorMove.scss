@@ -6,6 +6,7 @@
 $wrapper-class: cm-pointer;
 $dot-class: cm-pointer__dot;
 $over-class: cm-pointer__over;
+$effect-class: cm-pointer__overEffect;
 
 $dot-color: #000;
 $over-color: rgba(#eee, 0.54);
@@ -56,6 +57,7 @@ $ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
   opacity: 0;
   transform: scale(0);
   transition: opacity 0.5s ease;
+  overflow: hidden;
   pointer-events: none;
   z-index: 1;
   &.is-visible {
@@ -66,11 +68,16 @@ $ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
   &.is-hide {
     opacity: 0;
     transform: scale(0);
-  transition: transform 0.3s $ease-out-cubic,  opacity 0.5s ease-out;
+    transition: transform 0.3s $ease-out-cubic,  opacity 0.5s ease-out;
   }
   &.is-hover {
     transform: scale(2);
     transition: transform 0.3s $ease-out-cubic;
+
+    .#{$effect-class} {
+      animation: 0.8s cmEffectAnim $ease-out-cubic both;
+    }
+
   }
   &.is-active {
     transform: scale(2);
@@ -78,3 +85,27 @@ $ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 }
 
+.#{$effect-class} {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes cmEffectAnim {
+  0% {
+    width: 0%;
+    height: 0%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+}

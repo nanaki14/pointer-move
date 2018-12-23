@@ -1,4 +1,4 @@
-import CursorMove from './CursorMove'
+import CursorMove from './cursorMove'
 
 window.addEventListener('load', () => {
   const cursor = new CursorMove()

@@ -5,8 +5,6 @@ export default class CursorMove {
    * @param {string} - 内側のポインターのクラス名
    * @param {string} - 外側のポインターのクラス名
    * @param {string} - ホバー対象のリンク
-   * @param {string} - リンクホバー時のクラス
-   * @param {string} - 付与するクラス
    */
 
   constructor(wrapperClass, cursorClass, cursorOverClass, linkClass) {
