@@ -1,0 +1,34 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "ecmaFeatures": {},
+    "sourceType": "module"
+  },
+
+  "env": {
+    "es6": true,
+    "node": true
+  },
+
+  "extends": [
+    "standard"
+  ],
+
+  "plugins": [
+    "import",
+    "node",
+    "promise",
+    "standard"
+  ],
+
+  "globals": {
+    "document": false,
+    "navigator": false,
+    "window": false,
+    "requestAnimationFrame": false
+  },
+
+  "rules": {
+    "space-before-function-paren": 0
+  }
+}

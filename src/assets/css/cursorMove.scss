@@ -1,0 +1,54 @@
+@charset "utf-8";
+/*==========================
+      cursorMove style
+==========================*/
+
+$wrapper-class: cm-pointer;
+$dot-class: cm-pointer__dot;
+$over-class: cm-pointer__over;
+
+$dot-color: #000;
+$over-color: rgba(#eee, 0.54);
+
+$ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+.#{$wrapper-class} {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.#{$dot-class} {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: $dot-color;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.#{$over-class} {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: $over-color;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s $ease-in-out-quad;
+  pointer-events: none;
+  z-index: 1;
+  &.is-hover {
+    transform: translate(-50%, -50%) scale(2);
+  }
+  &.is-active {
+    transform: translate(-50%, -50%) scale(2);
+  }
+}

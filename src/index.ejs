@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('assets/_include/_config/_meta', {
+  meta: {
+    title:'HOME',
+    description:'このサイトの説明'
+  },
+  og: {
+    title:'site name',
+    description:'このサイトの説明',
+    type:'website',
+    url:'http://hogehoge.jp',
+    image:'https://example.com/image.jpg'
+  }
+}); %>
+</head>
+<body>
+<% include assets/_include/_layout/_header %>
+
+<main>
+  <div class="p-articleUnit">
+    <% for (let i = 0; i < 10; i++) { %>
+    <article class="p-article">
+      <a href="" class="p-article__inner cm-link">
+        <figure class="p-article__thumb">
+          <img src="http://placehold.jp/300x200.png" alt="">
+        </figure>
+        <p>text text text text text text text text text text　text text text text text text text text text text　text text text text text text text text text text　text text text text text text text text text text</p>
+      </a>
+    </article>
+    <% } %>
+  </div>
+</main>
+
+<div class="cm-pointer">
+  <span class="cm-pointer__dot"></span>
+  <span class="cm-pointer__over">
+    <span class="cm-pointer__overEffect"></span>
+  </span>
+</div>
+
+<% include assets/_include/_layout/_footer %>
+
+<% include assets/_include/_config/_script %>
+</body>
+</html>
+
