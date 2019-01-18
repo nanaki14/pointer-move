@@ -2,7 +2,7 @@
   `src/assets/css/cursorMove.scss`
   `src/assets/js/CursorMove.js`
 
-  html
+  html及びクラス初期値
 
   ```
     <div class="cm-pointer">
@@ -26,15 +26,13 @@ window.addEventListener('load', () => {
 })
 ```
 
-引数とか
+オプション
 
 ```
-CursorMove(
-  'wrapperのidまたはクラス',
-  'cursor(小)のidまたはクラス',
-  'cursor(大)のidまたはクラス',
-  'hover対象のリンクやボタンのクラス名'
-)
+CursorMove({
+  wrapperClass: 'wrapperのidまたはクラス',
+  cursorClass: 'cursor(小)のidまたはクラス',
+  cursorOverClass: 'cursor(大)のidまたはクラス',
+  linkClass: 'hover対象のリンクやボタンのクラス名'
+})
 ```
-
-あとは適宜いい感じに使う
