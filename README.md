@@ -12,6 +12,8 @@
       </span>
     </div>
   ```
+  
+ホバー対象のクラス名初期値 `.cm-link`
 
 ## CursorMove.js
 
