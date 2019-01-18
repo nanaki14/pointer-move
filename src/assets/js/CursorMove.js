@@ -7,11 +7,13 @@ export default class CursorMove {
    * @param {string} - ホバー対象のリンク
    */
 
-  constructor(wrapperClass, cursorClass, cursorOverClass, linkClass) {
-    this.wrapperClass = !wrapperClass ? '.cm-pointer' : wrapperClass
-    this.cursorClass = !cursorClass ? '.cm-pointer__dot' : cursorClass
-    this.cursorOverClass = !cursorOverClass ? '.cm-pointer__over' : cursorOverClass
-    this.linkClass = !linkClass ? '.cm-link' : linkClass
+  constructor(params) {
+    this.params = !params ? {} : params
+
+    this.wrapperClass = !this.params.hasOwnProperty('wrapperClass') ? '.cm-pointer' : params.wrapperClass
+    this.cursorClass = !this.params.hasOwnProperty('cursorClass') ? '.cm-pointer__dot' : this.params.cursorClass
+    this.cursorOverClass = !this.params.hasOwnProperty('cursorOverClass') ? '.cm-pointer__over' : this.params.cursorOverClass
+    this.linkClass = !this.params.hasOwnProperty('linkClass') ? '.cm-link' : this.params.linkClass
 
     this.visibleClass = 'is-visible'
     this.hideClass = 'is-hide'
